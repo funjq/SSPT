@@ -513,6 +513,5 @@ if __name__ == '__main__':
     img_size = 384
     x = torch.rand(1, 3, 384, 384)
     z=torch.rand(1, 3, 128, 128)
-    #model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96).cuda()
     model = build_sspt()
     output=model(z,x)
