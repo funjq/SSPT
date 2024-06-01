@@ -62,7 +62,7 @@ def get_parse():
     parser.add_argument('--name', default="2", type=str, help='model name')
     parser.add_argument('--backbone', default="SSPT_base", type=str, help='')
     parser.add_argument('--head', default="PN", type=str, help='neck_name')
-    parser.add_argument('--data_dir', default='/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/sspt_git/data',
+    parser.add_argument('--data_dir', default='./data',
                         type=str, help='training dir path')
     parser.add_argument('--centerR', default=35, type=int, help='')
     parser.add_argument('--UAVhw', default=96, type=int, help='')
@@ -81,8 +81,8 @@ def get_parse():
     parser.add_argument('--padding', default=0, type=float)
     parser.add_argument('--share', default=0, type=int)
     parser.add_argument('--USE_old_model', default=True)
-    parser.add_argument('--pretrain', default="/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/sspt_git/models/pretrain/spvt_v2.pth")
-    parser.add_argument('--old_model_pretrain', default="/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/SSPT/checkpoints/zsbtv2_base_sigma64_upsampler_oldpth821_0822/net_020.pth")
+    parser.add_argument('--pretrain', default="./pretrain/.pth")
+    parser.add_argument('--old_model_pretrain', default="./pretrain/net_020.pth")
     parser.add_argument('--save_ckpt', default=1, type=float)
     parser.add_argument('--pos_num', default=300, type=int)
     parser.add_argument('--pos_label', default=33, type=int, help='400 or 1')
