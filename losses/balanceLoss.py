@@ -26,7 +26,7 @@ class GaussianLoss(nn.Module):
         weight = target.new_zeros(target.size())
 
         ## ############## set gauss weight  #####################
-        center_num =  torch.from_numpy(self.create_gaussian_mask(self.center_R,1)).unsqueeze(0).repeat(target.size(0), 1, 1)
+        center_num =  torch.from_numpy(self.create_gaussian_mask(self.center_R,5.5)).unsqueeze(0).repeat(target.size(0), 1, 1)
         # ############## set hanning weight  #####################
         # center_num = torch.tensor(self.create_hanning_mask(self.center_R)).unsqueeze(0).repeat(int(target.size(0)), 1,1)  # 创建汉宁窗口 并且
         pos_center = (center_num != 0)

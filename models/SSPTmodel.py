@@ -501,7 +501,7 @@ def build_sspt(cross_dict=None):
         ]
     model = SSPT_base(pretrained=False,  num_stages=3, cross_num=5)
     model_dict = model.state_dict()
-    p = r'/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/SSPT/pretrain/spvt_v2.pth'
+    #p = r'/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/SSPT/pretrain/spvt_v2.pth'
 
     return model
 
@@ -513,6 +513,5 @@ if __name__ == '__main__':
     img_size = 384
     x = torch.rand(1, 3, 384, 384)
     z=torch.rand(1, 3, 128, 128)
-    #model = FocalNet(depths=[2, 2, 6, 2], embed_dim=96).cuda()
     model = build_sspt()
     output=model(z,x)

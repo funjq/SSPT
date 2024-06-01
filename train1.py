@@ -26,7 +26,8 @@ from tools.flops import get_model_complexity_info
 
 warnings.filterwarnings("ignore")
 
-map_all = [700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800]
+# map_all = [700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800]
+map_all = [1000, 1050, 1100, 1150, 1200, 1250, 1300, 1350, 1400, 1450, 1500, 1550]
 save_metre_rnage = [3, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100]
 save_metre_original = (np.array([0] * (len(save_metre_rnage) + 1) * len(map_all)).reshape(len(map_all),
                                                                                           len(save_metre_rnage) + 1)).tolist()
@@ -61,7 +62,7 @@ def get_parse():
     parser.add_argument('--name', default="2", type=str, help='model name')
     parser.add_argument('--backbone', default="SSPT_base", type=str, help='')
     parser.add_argument('--head', default="PN", type=str, help='neck_name')
-    parser.add_argument('--data_dir', default='/media/zeh/2TBlue/fjq/SSPT/SiamUAV_date',
+    parser.add_argument('--data_dir', default='/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/sspt_git/data',
                         type=str, help='training dir path')
     parser.add_argument('--centerR', default=35, type=int, help='')
     parser.add_argument('--UAVhw', default=96, type=int, help='')
@@ -71,17 +72,19 @@ def get_parse():
     parser.add_argument('--neg_weight', default=15.0, type=float, help='balance sample')
     parser.add_argument('--num_epochs', default=100, type=int, help='')
     parser.add_argument('--start_save', default=40, type=int, help='')
-    parser.add_argument('--start_test', default=30, type=int, help='')
-    parser.add_argument('--save_epochs', default=5, type=int, help='')
+    parser.add_argument('--start_test', default=10, type=int, help='')
+    parser.add_argument('--save_epochs', default=10, type=int, help='')
     parser.add_argument('--num_worker', default=2, type=int, help='')
     parser.add_argument('--warm_epoch', default=0, type=int, help='the first K epoch that needs warm up')
-    parser.add_argument('--autocast', action='store_true', default=True, help='use mix precision')
+    parser.add_argument('--autocast', action='store_true', default=True)
     parser.add_argument('--log_iter', default=50, type=int, help='')
-    parser.add_argument('--padding', default=0, type=float, help='the times of padding for the image size')
-    parser.add_argument('--share', default=0, type=int, help='the times of padding for the image size')
-    parser.add_argument('--USE_old_model', default=False,help='all model will be loaded if you use this way')
-    parser.add_argument('--save_ckpt', default=1, type=float, help='the times of padding for the image size')
-    parser.add_argument('--pos_num', default=300, type=int, help='the times of padding for the image size')
+    parser.add_argument('--padding', default=0, type=float)
+    parser.add_argument('--share', default=0, type=int)
+    parser.add_argument('--USE_old_model', default=True)
+    parser.add_argument('--pretrain', default="/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/sspt_git/models/pretrain/spvt_v2.pth")
+    parser.add_argument('--old_model_pretrain', default="/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/SSPT/checkpoints/zsbtv2_base_sigma64_upsampler_oldpth821_0822/net_020.pth")
+    parser.add_argument('--save_ckpt', default=1, type=float)
+    parser.add_argument('--pos_num', default=300, type=int)
     parser.add_argument('--pos_label', default=33, type=int, help='400 or 1')
     parser.add_argument('--adamw_cos', default=5e-6, type=float, help='400 or 1')
     parser.add_argument('--cut_circle', default=1500, type=int, help='400 or 1')

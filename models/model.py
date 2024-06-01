@@ -3,7 +3,7 @@ from .make_model import make_transformer_model
 from .model_neck_query import PN
 import torch
 
-Transformer_model_list = ["FocalNet", "smt", "pcpvt_small","SSPT_base"]
+Transformer_model_list = ["SSPT_base"]
 
 class SiamUAV_Transformer_Model(nn.Module):
     def __init__(self, opt):
@@ -25,15 +25,14 @@ class SiamUAV_Transformer_Model(nn.Module):
 
     def load_params(self, opt):
         # load pretrain param
-        if opt.backbone == "SSPT_base":
-            pretrain = '/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/sspt_git/models/pretrain/spvt_v2.pth'
+        # if opt.backbone == "SSPT_base":
+        #     pretrain = opt.pretrain
 
 
         if opt.USE_old_model:
-            self.load_param_self_backbone("/media/zeh/4d723c17-52ed-4771-9ff5-c5b4cf1675e9/fjq/SSPT/checkpoints/zsbtv2_base_sigma64_upsampler_oldpth821_0822/net_020.pth")
+            self.load_param_self_backbone(opt.old_model_pretrain)
         else:
-            # self.model_uav.transformer.load_param_self_backbone("/media/zeh/2TBlue/FPI/pretrain_model/best_1500.pth")  # only load backbone
-            self.model_uav.transformer.load_param_self_backbone(pretrain)
+            self.model_uav.transformer.load_param_self_backbone(opt.pretrain)
 
 
 
